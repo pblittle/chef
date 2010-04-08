@@ -143,10 +143,9 @@ class Chef
       end
       
       def migrate
-        run_symlinks_before_migrate
-        
         if @new_resource.migrate
           enforce_ownership
+          run_symlinks_before_migrate
           
           environment = @new_resource.environment
           env_info = environment && environment.map do |key_and_val| 
